@@ -12,154 +12,126 @@
 
 <style>
 :root {
-  --bg-deep: #020412;
-  --bg-main: #070c2e;
-  --bg-surface: #101a4a;
-  --bg-card: rgba(16, 26, 74, 0.65);
+  --bg-deep: #020408;
+  --bg-surface: #0a0e1a;
+  --bg-card: #101525;
+  --bg-glass: rgba(10, 14, 26, 0.85);
   
-  --text-main: #f8faff;
-  --text-muted: #b8c8f0;
-  --text-dim: #6070b0;
-  
-  --gold-noble: #d4af37;
+  --gold-primary: #d4af37;
   --gold-soft: #f0d878;
-  --rose-burnt: #c05a80;
-  --rose-decor: rgba(192, 90, 128, 0.35);
-  --cyan-tech: #50d0f0;
+  --rose: #c05a80;
+  --cyan-tech: #5ac8fa;
   
-  --border-gold: rgba(212, 175, 55, 0.5);
-  --border-rose: rgba(192, 90, 128, 0.45);
-  --border-cyan: rgba(80, 208, 240, 0.4);
+  --text-light: #f8f9fa;
+  --text-muted: #b0b8d0;
+  --text-dim: #6b7294;
   
-  --glow-gold: 0 0 20px rgba(212, 175, 55, 0.2);
-  --glow-rose: 0 0 20px rgba(192, 90, 128, 0.2);
-  --glow-cyan: 0 0 15px rgba(80, 208, 240, 0.15);
-  --glow-holo: 0 0 25px rgba(80, 208, 240, 0.1), 0 0 40px rgba(192, 90, 128, 0.06);
+  --border-gold: rgba(212, 175, 55, 0.4);
+  --border-rose: rgba(192, 90, 128, 0.4);
+  --border-cyan: rgba(90, 200, 250, 0.4);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-  background: linear-gradient(135deg, #020412 0%, #070c2e 50%, #020412 100%);
-  color: var(--text-main);
+  background: linear-gradient(135deg, #020408 0%, #0a0e1a 50%, #020408 100%);
+  color: var(--text-light);
   font-family: 'Inter', sans-serif;
   min-height: 100vh;
   line-height: 1.7;
   overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
 }
 a { text-decoration: none; color: inherit; }
 
 .top-bar {
-  position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 100;
-  background: linear-gradient(90deg, transparent 10%, var(--cyan-tech) 30%, var(--rose-burnt) 50%, var(--gold-noble) 70%, transparent 90%);
-  box-shadow: 0 0 10px var(--rose-burnt);
+  position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 100;
+  background: linear-gradient(90deg, transparent 10%, var(--cyan-tech) 30%, var(--rose) 50%, var(--gold-primary) 70%, transparent 90%);
 }
 
 .corner {
-  position: absolute; width: 32px; height: 32px; border: 0 solid; opacity: 0.9; pointer-events: none;
+  position: absolute; width: 32px; height: 32px; pointer-events: none;
 }
-.corner-tl { top: 16px; left: 16px; border-top: 2px solid var(--rose-burnt); border-left: 2px solid var(--rose-burnt); border-radius: 6px 0 0 0; }
-.corner-tr { top: 16px; right: 16px; border-top: 2px solid var(--gold-noble); border-right: 2px solid var(--gold-noble); border-radius: 0 6px 0 0; }
-.corner-bl { bottom: 16px; left: 16px; border-bottom: 2px solid var(--gold-noble); border-left: 2px solid var(--gold-noble); border-radius: 0 0 0 6px; }
-.corner-br { bottom: 16px; right: 16px; border-bottom: 2px solid var(--rose-burnt); border-right: 2px solid var(--rose-burnt); border-radius: 0 0 6px 0; }
+.corner-tl { top: 12px; left: 12px; border-top: 2px solid var(--rose); border-left: 2px solid var(--rose); border-radius: 6px 0 0 0; }
+.corner-tr { top: 12px; right: 12px; border-top: 2px solid var(--gold-primary); border-right: 2px solid var(--gold-primary); border-radius: 0 6px 0 0; }
+.corner-bl { bottom: 12px; left: 12px; border-bottom: 2px solid var(--gold-primary); border-left: 2px solid var(--gold-primary); border-radius: 0 0 0 6px; }
+.corner-br { bottom: 12px; right: 12px; border-bottom: 2px solid var(--rose); border-right: 2px solid var(--rose); border-radius: 0 0 6px 0; }
 
 header {
   position: fixed; top: 0; width: 100%; z-index: 99;
-  padding: 10px 5vw;
-  background: rgba(7, 12, 46, 0.9);
-  border-bottom: 1px solid var(--border-rose);
+  padding: 12px 5vw;
+  background: rgba(10, 14, 26, 0.8);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(90, 200, 250, 0.15);
 }
 .nav {
-  max-width: 1280px; margin: 0 auto;
+  max-width: 1200px; margin: 0 auto;
   display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;
 }
 .brand {
   display: flex; align-items: center; gap: 12px;
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
 }
 .brand-logo {
   width: 40px; height: 40px; border-radius: 8px;
-  background: linear-gradient(135deg, var(--rose-burnt), var(--gold-noble));
+  background: linear-gradient(135deg, var(--rose), var(--gold-primary));
   display: flex; align-items: center; justify-content: center;
-  box-shadow: var(--glow-rose);
   overflow: hidden;
 }
-.brand-logo img {
-  width: 100%; height: 100%;
-  object-fit: contain;
+.brand-logo img { width: 100%; height: 100%; object-fit: contain; }
+.brand-location {
+  font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--rose); background: rgba(192, 90, 128, 0.15);
+  padding: 4px 12px; border-radius: 20px;
 }
-.brand-status {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 5px 12px; border-radius: 999px;
-  background: var(--rose-decor); border: 1px solid var(--border-rose);
-  font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: #d8a0b5;
-  margin-left: 12px;
+.nav-links { display: flex; gap: 32px; flex-wrap: wrap; }
+.nav-links a {
+  font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);
+  padding: 6px 0; border-bottom: 2px solid transparent; transition: all 0.3s ease;
 }
-.brand-status-dot {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: var(--rose-burnt);
-  animation: pulse 2s infinite;
+.nav-links a:hover { color: var(--gold-soft); border-bottom-color: var(--rose); }
+@media (max-width: 768px) {
+  .nav-links { gap: 16px; }
+  .nav-links a { font-size: 0.7rem; }
 }
-@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
 
-.nav-links { display: flex; gap: 32px; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); flex-wrap: wrap; }
-.nav-links a { padding: 6px 0; position: relative; transition: color 0.25s ease; }
-.nav-links a::after {
-  content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
-  background: linear-gradient(90deg, var(--rose-burnt), var(--gold-noble));
-  transition: width 0.25s ease;
-}
-.nav-links a:hover { color: #fff; }
-.nav-links a:hover::after { width: 100%; }
-@media (max-width: 768px) { .nav-links { font-size: 0.65rem; gap: 15px; } }
-
-.section { padding: 140px 5vw 100px; position: relative; z-index: 1; }
+.section { padding: 140px 5vw 100px; position: relative; }
 .section-inner { max-width: 1200px; margin: 0 auto; }
 
 .eyebrow {
-  font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
-  color: var(--gold-noble); margin-bottom: 12px;
+  font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--gold-primary); margin-bottom: 12px;
   display: flex; align-items: center; gap: 10px;
 }
 .eyebrow::before {
-  content: ''; width: 12px; height: 2px;
-  background: linear-gradient(90deg, var(--rose-burnt), var(--gold-noble));
+  content: ''; width: 12px; height: 2px; background: linear-gradient(90deg, var(--rose), var(--gold-primary));
 }
 
 .section-title {
   font-family: 'Playfair Display', serif;
   font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 700;
-  color: var(--gold-noble); line-height: 1.1; margin-bottom: 16px;
-  text-shadow: 0 0 10px rgba(212, 175, 55, 0.12);
+  color: var(--gold-primary); line-height: 1.1; margin-bottom: 16px;
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
 }
-.section-line {
+.section-divider {
   width: 220px; height: 2px; margin: 10px 0 30px;
-  background: linear-gradient(90deg, var(--rose-burnt), var(--gold-noble), var(--cyan-tech), transparent);
+  background: linear-gradient(90deg, var(--rose), var(--gold-primary), var(--cyan-tech), transparent);
   position: relative;
 }
-.section-line::after {
-  content: ''; position: absolute; left: 0; top: 50%; margin-top: -4px;
-  width: 10px; height: 10px; border-radius: 50%;
-  background: var(--rose-burnt); box-shadow: 0 0 8px var(--rose-burnt);
+.section-divider::after {
+  content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+  width: 10px; height: 10px; border-radius: 50%; background: var(--rose); box-shadow: 0 0 8px var(--rose);
 }
 
-#hero {
-  min-height: 100vh; display: flex; align-items: center;
-  padding: 140px 5vw 80px; position: relative;
+.hero {
+  min-height: 100vh; display: flex; align-items: center; padding-top: 80px;
 }
 .hero-grid {
   display: grid; grid-template-columns: 320px 1fr; gap: 70px; align-items: center;
 }
 .hero-logo-box {
   position: relative; width: 100%; aspect-ratio: 1; border-radius: 14px; padding: 3px;
-  background: linear-gradient(135deg, var(--rose-burnt), var(--gold-noble), var(--cyan-tech), var(--rose-burnt));
-  background-size: 300% 300%;
-  animation: gradientShift 8s ease infinite;
-  box-shadow: var(--glow-holo);
+  background: linear-gradient(135deg, var(--rose), var(--gold-primary), var(--cyan-tech), var(--rose));
+  background-size: 300% 300%; animation: gradientShift 8s ease infinite;
+  box-shadow: 0 0 40px rgba(90, 200, 250, 0.15), 0 0 60px rgba(192, 90, 128, 0.1);
 }
 @keyframes gradientShift {
   0% { background-position: 0% 50%; }
@@ -167,21 +139,20 @@ header {
   100% { background-position: 0% 50%; }
 }
 .hero-logo-inner {
-  width: 100%; height: 100%; border-radius: 12px; background: rgba(5, 7, 20, 0.9);
-  display: flex; align-items: center; justify-content: center;
-  overflow: hidden;
+  width: 100%; height: 100%; border-radius: 12px; background: rgba(2, 4, 8, 0.9);
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
 }
-.hero-logo-inner img {
-  width: 85%; height: 85%;
-  object-fit: contain;
+.hero-logo-inner img { width: 85%; height: 85%; object-fit: contain; }
+.hero-tagline {
+  font-size: clamp(0.9rem, 2vw, 1.1rem); letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--text-muted); margin: 30px 0 40px; display: flex; gap: 15px; flex-wrap: wrap;
 }
+.hero-tagline .dot { color: var(--rose); }
 .hero-title {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(3.5rem, 10vw, 7rem); font-weight: 800;
-  line-height: 0.9; text-transform: uppercase; margin-bottom: 30px;
-  background: linear-gradient(135deg, #fff 0%, #f0d878 30%, var(--gold-noble) 50%, #e8c8d0 70%, #fff 100%);
-  background-size: 200% 200%;
-  animation: titleGlow 6s ease infinite;
+  font-size: clamp(3.5rem, 10vw, 7rem); font-weight: 800; line-height: 0.9; text-transform: uppercase;
+  background: linear-gradient(135deg, #fff 0%, var(--gold-soft) 30%, var(--gold-primary) 50%, var(--rose) 70%, #fff 100%);
+  background-size: 200% 200%; animation: titleGlow 6s ease infinite;
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text;
 }
@@ -190,141 +161,138 @@ header {
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
-.hero-subtitle {
-  font-size: clamp(0.9rem, 2vw, 1.1rem); letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--text-muted); margin-bottom: 40px;
-  display: flex; gap: 15px; flex-wrap: wrap;
-}
-.hero-subtitle .dot { color: var(--rose-burnt); }
 .btn {
   display: inline-flex; align-items: center; gap: 12px;
   padding: 16px 36px; border-radius: 6px;
   border: 1px solid var(--border-gold); background: rgba(212, 175, 55, 0.08);
-  color: #fff; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: #fff; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em;
   cursor: pointer; transition: all 0.3s ease;
 }
 .btn:hover {
-  border-color: var(--rose-burnt); transform: translateY(-2px);
-  box-shadow: var(--glow-rose);
+  border-color: var(--rose); transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(192, 90, 128, 0.2);
   background: rgba(192, 90, 128, 0.1);
 }
 .btn-primary {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(22, 32, 80, 0.7));
-  border-color: var(--gold-noble);
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(90, 200, 250, 0.07));
+  border-color: var(--gold-primary);
 }
-.btn-group { display: flex; gap: 20px; flex-wrap: wrap; }
-@media (max-width: 768px) { .hero-grid { grid-template-columns: 1fr; } }
+.btn-group { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 40px; }
+@media (max-width: 768px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+}
 
 .media-box {
   position: relative; border-radius: 14px; padding: 3px;
-  background: linear-gradient(135deg, var(--rose-burnt), var(--gold-noble), var(--cyan-tech), var(--rose-burnt));
-  background-size: 300% 300%;
-  animation: gradientShift 7s ease infinite;
-  box-shadow: var(--glow-holo);
+  background: linear-gradient(135deg, var(--rose), var(--gold-primary), var(--cyan-tech), var(--rose));
+  background-size: 300% 300%; animation: gradientShift 7s ease infinite;
+  box-shadow: 0 0 30px rgba(90, 200, 250, 0.1);
 }
-.media-box-inner {
+.media-inner {
   border-radius: 12px; overflow: hidden; background: rgba(0, 0, 0, 0.8);
   width: 100%; aspect-ratio: 1;
 }
-.media-box-inner.vertical { aspect-ratio: 9/16; }
-.media-box-inner video, .media-box-inner img {
+.media-inner.vertical { aspect-ratio: 9/16; }
+.media-inner img, .media-inner video {
   width: 100%; height: 100%; object-fit: cover;
 }
 
 .presentation-grid {
   display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center;
 }
-.presentation-copy { font-size: 1.05rem; color: var(--text-muted); }
-.presentation-copy p { margin-bottom: 20px; }
+.presentation-text { font-size: 1.05rem; color: var(--text-muted); }
+.presentation-text p { margin-bottom: 20px; }
+@media (max-width: 850px) {
+  .presentation-grid { grid-template-columns: 1fr; }
+}
 
 .project-card {
   display: grid; grid-template-columns: 1fr 1fr; gap: 35px; padding: 35px;
-  background: var(--bg-card); border: 1px solid var(--border-cyan); border-radius: 14px;
+  background: rgba(16, 21, 37, 0.6); border: 1px solid var(--border-cyan); border-radius: 14px;
   position: relative; overflow: hidden; margin-bottom: 40px;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s ease; backdrop-filter: blur(8px);
 }
 .project-card:hover {
-  border-color: var(--rose-burnt);
-  box-shadow: var(--glow-rose);
-  transform: translateY(-2px);
+  border-color: var(--rose); box-shadow: 0 0 25px rgba(192, 90, 128, 0.1); transform: translateY(-2px);
 }
-.project-content h3 {
-  color: var(--gold-noble); font-size: 1.15rem; letter-spacing: 0.15em;
+.project-title {
+  color: var(--gold-primary); font-size: 1.15rem; letter-spacing: 0.15em;
   text-transform: uppercase; margin-bottom: 15px;
 }
-.project-content p { color: var(--text-muted); line-height: 1.8; margin-bottom: 10px; }
-.project-media-dual { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-.project-media-triple { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-.project-media-single { display: grid; grid-template-columns: 1fr; gap: 15px; }
+.project-desc { color: var(--text-muted); line-height: 1.8; margin-bottom: 10px; }
+.media-dual { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.media-triple { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.media-single { display: grid; grid-template-columns: 1fr; gap: 15px; }
 @media (max-width: 850px) {
-  .presentation-grid, .project-card { grid-template-columns: 1fr; }
-  .project-media-dual, .project-media-triple, .project-media-single { grid-template-columns: 1fr; }
+  .project-card { grid-template-columns: 1fr; }
+  .media-dual, .media-triple { grid-template-columns: 1fr; }
 }
 
 .visual-grid {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-top: 40px;
 }
-.visual-card { aspect-ratio: 1; overflow: hidden; position: relative; border-radius: 14px; padding: 2px; background: linear-gradient(135deg, var(--border-cyan), var(--border-rose)); transition: all 0.3s ease; }
-.visual-card:hover { transform: translateY(-3px); box-shadow: var(--glow-holo); }
-.visual-card-inner { border-radius: 12px; overflow: hidden; background: #000; width: 100%; height: 100%; }
-.visual-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
-.visual-card:hover img { transform: scale(1.05); }
-.visual-card-caption {
-  position: absolute; bottom: 0; left: 0; right: 0; padding: 25px;
-  background: linear-gradient(transparent, rgba(5, 7, 20, 0.95));
+.visual-card {
+  aspect-ratio: 1; overflow: hidden; position: relative; border-radius: 14px; padding: 2px;
+  background: linear-gradient(135deg, var(--border-cyan), var(--border-rose)); transition: all 0.3s ease;
 }
-.visual-card-caption h3 {
-  color: var(--gold-noble); font-size: 0.95rem; letter-spacing: 0.12em; text-transform: uppercase;
+.visual-card:hover { transform: translateY(-3px); box-shadow: 0 0 30px rgba(90, 200, 250, 0.15); }
+.visual-inner { border-radius: 12px; overflow: hidden; background: #000; width: 100%; height: 100%; }
+.visual-inner img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
+.visual-card:hover img { transform: scale(1.05); }
+.visual-caption {
+  position: absolute; bottom: 0; left: 0; right: 0; padding: 25px;
+  background: linear-gradient(transparent, rgba(2, 4, 8, 0.95));
+}
+.visual-caption h3 {
+  color: var(--gold-primary); font-size: 0.95rem; letter-spacing: 0.12em; text-transform: uppercase;
 }
 
 .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 50px; }
+.contact-box {
+  border-left: 3px solid var(--rose); padding: 25px; background: rgba(16, 21, 37, 0.4); border-radius: 0 8px 8px 0;
+}
+.contact-label {
+  font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rose); margin-bottom: 8px;
+}
+.contact-email { color: #fff; font-weight: 600; font-size: 1rem; }
 .field { margin-bottom: 20px; }
 .field label {
-  display: block; margin-bottom: 8px; color: var(--gold-noble);
+  display: block; margin-bottom: 8px; color: var(--gold-primary);
   font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
 }
 .field input, .field textarea {
   width: 100%; padding: 14px 18px; border-radius: 6px;
-  border: 1px solid var(--border-cyan); background: rgba(22, 32, 80, 0.6);
+  border: 1px solid var(--border-cyan); background: rgba(22, 32, 128, 0.06);
   color: #fff; outline: none; transition: all 0.25s ease;
+  font-family: inherit;
 }
 .field input:focus, .field textarea:focus {
-  border-color: var(--rose-burnt); box-shadow: var(--glow-rose);
-  background: rgba(22, 32, 80, 0.8);
+  border-color: var(--rose); box-shadow: 0 0 12px rgba(192, 90, 128, 0.15);
+  background: rgba(22, 32, 128, 0.08);
 }
 .field textarea { min-height: 140px; resize: vertical; }
+@media (max-width: 850px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
 
 footer {
   padding: 50px 6vw 30px; border-top: 1px solid var(--border-rose);
   background: rgba(5, 7, 20, 0.9); text-align: center;
   color: var(--text-dim); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
-  position: relative; z-index: 1;
 }
-.footer-closing {
+.footer-quote {
   max-width: 700px; margin: 0 auto 30px; padding: 35px;
   border: 1px solid var(--border-gold); border-radius: 14px;
   background: rgba(212, 175, 55, 0.05);
-  box-shadow: var(--glow-gold);
 }
-.verse {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.1rem; font-style: italic;
-  color: var(--gold-soft); margin-bottom: 12px; line-height: 1.8;
+.quote-text {
+  font-family: 'Playfair Display', serif; font-style: italic;
+  color: var(--gold-soft); font-size: 1.1rem; margin-bottom: 12px; line-height: 1.8;
 }
-.verse-reference {
-  font-size: 0.85rem; color: #d8a0b5; margin-bottom: 25px;
-}
-.footer-closing p { color: var(--text-muted); margin-bottom: 10px; }
-.footer-signature {
-  color: var(--gold-noble); font-family: 'Playfair Display', serif;
-  font-size: 1.1rem; margin-top: 25px;
-}
+.quote-author { color: var(--rose); }
 
 .reveal {
-  opacity: 0; transform: translateY(20px);
-  transition: all 0.6s ease-out;
+  opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out;
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 </style>
@@ -337,12 +305,10 @@ footer {
   <div class="nav">
     <a href="#hero" class="brand">
       <div class="brand-logo">
-        <img src="logo.png" alt="ELYZAMA BRITT">
+        <img src="logo.jpg" alt="ELYZAMA BRITT">
       </div>
       <span>ELYZAMA BRITT</span>
-      <span class="brand-status">
-        <span class="brand-status-dot"></span> Salvador • Bahia
-      </span>
+      <span class="brand-location">Salvador • Bahia</span>
     </a>
     <nav class="nav-links">
       <a href="#apresentacao">Apresentação</a>
@@ -355,22 +321,22 @@ footer {
 </header>
 
 <main>
-<section id="hero" class="section">
+<section id="hero" class="section hero">
   <div class="section-inner">
     <div class="hero-grid reveal">
       <div class="hero-logo-box">
-        <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
-        <div class="corner corner-bl"></div><div class="corner corner-br"></div>
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
         <div class="hero-logo-inner">
-          <img src="logo.png" alt="ELYZAMA BRITT">
+          <img src="logo.jpg" alt="ELYZAMA BRITT">
         </div>
       </div>
       <div>
-        <div class="brand-status" style="margin-bottom: 25px;">
-          <span class="brand-status-dot"></span> Portfólio Profissional
-        </div>
+        <p class="brand-location" style="display: inline-block; margin-bottom: 25px;">Portfólio Profissional</p>
         <h1 class="hero-title">ELYZAMA<br>BRITT</h1>
-        <p class="hero-subtitle">
+        <p class="hero-tagline">
           Comunicação <span class="dot">•</span>
           Inteligência Artificial <span class="dot">•</span>
           Conteúdo Digital
@@ -385,25 +351,23 @@ footer {
 </section>
 
 <section id="apresentacao" class="section">
-  <div class="section-inner">
-    <div class="presentation-grid">
-      <div class="reveal">
-        <p class="eyebrow">Apresentação</p>
-        <h2 class="section-title">Um Caminho em Construção</h2>
-        <div class="section-line"></div>
-        <div class="presentation-copy">
-          <p>Este portfólio nasceu da vontade de transformar ideias em criação e mostrar um pouco do caminho que venho construindo profissionalmente.</p>
-          <p>Minha curiosidade, facilidade para aprender e interesse por comunicação e inteligência artificial me levaram a explorar ferramentas, desenvolver novas habilidades e encontrar diferentes formas de expressar ideias e sentimentos através da criação digital.</p>
-          <p>Aqui, reúno projetos que representam esse processo e demonstram minhas aptidões, minha criatividade e a forma como venho construindo meu posicionamento profissional.</p>
-        </div>
-      </div>
-      <div class="reveal">
-        <div class="media-box vertical">
-          <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
-          <div class="corner corner-bl"></div><div class="corner corner-br"></div>
-          <div class="media-box-inner vertical">
-            <video src="apresentacao.mp4" controls playsinline preload="metadata"></video>
-          </div>
+  <div class="section-inner presentation-grid">
+    <div class="reveal presentation-text">
+      <p class="eyebrow">Apresentação</p>
+      <h2 class="section-title">Um Caminho em Construção</h2>
+      <div class="section-divider"></div>
+      <p>Este portfólio nasceu da vontade de transformar ideias em criação e mostrar um pouco do caminho que venho construindo profissionalmente.</p>
+      <p>Minha curiosidade, facilidade para aprender e interesse por comunicação e inteligência artificial me levaram a explorar ferramentas, desenvolver novas habilidades e encontrar diferentes formas de expressar ideias e sentimentos através da criação digital.</p>
+      <p>Aqui, reúno projetos que representam esse processo e demonstram minhas aptidões, minha criatividade e a forma como venho construindo meu posicionamento profissional.</p>
+    </div>
+    <div class="reveal">
+      <div class="media-box vertical">
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+        <div class="media-inner vertical">
+          <video src="apresentacão.mp4" controls playsinline preload="metadata"></video>
         </div>
       </div>
     </div>
@@ -415,7 +379,7 @@ footer {
     <div class="reveal" style="text-align: center;">
       <p class="eyebrow" style="justify-content: center;">Projeto em Destaque</p>
       <h2 class="section-title">Carro-Chefe</h2>
-      <div class="section-line" style="margin-left: auto; margin-right: auto;"></div>
+      <div class="section-divider" style="margin: 0 auto 30px;"></div>
       <p style="color: var(--text-muted); max-width: 700px; margin: 0 auto 40px;">
         Ela não ficou dentro da tela. Ela atravessou, quebrou o vidro e veio até você.<br><br>
         Um vídeo criado para transformar criatividade em presença, mostrar o que a IA pode tornar possível e fazer um convite direto: você também pode criar, dar vida à sua marca e transformar sua ideia em realidade.
@@ -423,10 +387,12 @@ footer {
     </div>
     <div class="reveal" style="max-width: 340px; margin: 0 auto;">
       <div class="media-box vertical">
-        <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
-        <div class="corner corner-bl"></div><div class="corner corner-br"></div>
-        <div class="media-box-inner vertical">
-          <video src="carro-chefe.mp4" controls playsinline preload="metadata"></video>
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+        <div class="media-inner vertical">
+          <video src="Carro-chefe.mp4" controls playsinline preload="metadata"></video>
         </div>
       </div>
     </div>
@@ -442,85 +408,97 @@ footer {
     <div class="reveal">
       <p class="eyebrow">Projetos</p>
       <h2 class="section-title">Meus Trabalhos</h2>
-      <div class="section-line"></div>
+      <div class="section-divider"></div>
     </div>
 
     <article class="project-card reveal">
-      <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
-      <div class="corner corner-bl"></div><div class="corner corner-br"></div>
-      <div class="project-media-dual">
-        <div class="media-box"><div class="media-box-inner"><img src="livro-capa.png" alt="Capa — Os Dois Lados de Um Sonho"></div></div>
-        <div class="media-box"><div class="media-box-inner"><img src="livro-contracapa.png" alt="Contracapa — Os Dois Lados de Um Sonho"></div></div>
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div>
+      <div class="corner corner-br"></div>
+      <div class="media-dual">
+        <div class="media-box"><div class="media-inner"><img src="livro-capa.png" alt="Capa — Os Dois Lados de Um Sonho"></div></div>
+        <div class="media-box"><div class="media-inner"><img src="livro-contracapa.jpg" alt="Contracapa — Os Dois Lados de Um Sonho"></div></div>
       </div>
       <div class="project-content">
-        <h3>Os Dois Lados de Um Sonho — Livro Autoral</h3>
-        <p>Este livro nasceu do desejo de dar voz a uma menina inocente, sensível e cheia de imaginação, que carregava dentro de si um universo que nem sempre era compreendido por quem estava ao seu redor. Uma criança brilhante, com sonhos, pensamentos e uma forma singular de enxergar a vida, que encontrou na imaginação um lugar para ser quem realmente era.</p>
-        <p style="margin-top: 12px;">Mais do que contar uma história, este projeto nasceu da vontade de transformar em palavras sentimentos, pensamentos e sonhos que, um dia, essa menina guardou dentro de si — dando espaço para que sua voz finalmente pudesse ser ouvida.</p>
+        <h3 class="project-title">Os Dois Lados de Um Sonho — Livro Autoral</h3>
+        <p class="project-desc">Este livro nasceu do desejo de dar voz a uma menina inocente, sensível e cheia de imaginação, que carregava dentro de si um universo que nem sempre era compreendido por quem estava ao seu redor. Uma criança brilhante, com sonhos, pensamentos e uma forma singular de enxergar a vida, que encontrou na imaginação um lugar para ser quem realmente era.</p>
+        <p class="project-desc">Mais do que contar uma história, este projeto nasceu da vontade de transformar em palavras sentimentos, pensamentos e sonhos que, um dia, essa menina guardou dentro de si — dando espaço para que sua voz finalmente pudesse ser ouvida.</p>
       </div>
     </article>
 
     <article class="project-card reveal">
-      <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
-      <div class="corner corner-bl"></div><div class="corner corner-br"></div>
-      <div class="project-media-dual">
-        <div class="media-box"><div class="media-box-inner"><video src="pizzaria-video.mp4" controls playsinline preload="metadata"></video></div></div>
-        <div class="media-box"><div class="media-box-inner"><img src="pizzaria-imagem-base.png" alt="Pizzaria — Imagem Base"></div></div>
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div>
+      <div class="corner corner-br"></div>
+      <div class="media-dual">
+        <div class="media-box"><div class="media-inner"><video src="pizzaria-video.mp4" controls playsinline preload="metadata"></video></div></div>
+        <div class="media-box"><div class="media-inner"><img src="pizzaria-imagem-base.png" alt="Pizzaria — Imagem Base"></div></div>
       </div>
       <div class="project-content">
-        <h3>Projeto Pizzaria — Design de Divulgação</h3>
-        <p>Um conceito criativo que une o universo da pizza à construção, transformando essa ideia em uma peça visual marcante. O projeto ganhou duas versões: um pôster e uma versão em vídeo animado.</p>
+        <h3 class="project-title">Projeto Pizzaria — Design de Divulgação</h3>
+        <p class="project-desc">Um conceito criativo que une o universo da pizza à construção, transformando essa ideia em uma peça visual marcante. O projeto ganhou duas versões: um pôster e uma versão em vídeo animado.</p>
       </div>
     </article>
 
     <article class="project-card reveal">
-      <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
-      <div class="corner corner-bl"></div><div class="corner corner-br"></div>
-      <div class="project-media-single">
-        <div class="media-box"><div class="media-box-inner"><video src="projeto-1.mp4" controls playsinline preload="metadata"></video></div></div>
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div>
+      <div class="corner corner-br"></div>
+      <div class="media-single">
+        <div class="media-box"><div class="media-inner"><video src="Projeto1.mp4" controls playsinline preload="metadata"></video></div></div>
       </div>
       <div class="project-content">
-        <h3>Projeto 1</h3>
-        <p>Uma apresentação visual das minhas habilidades, com cada elemento ao redor da personagem representando competências que fazem parte do meu trabalho — da Inteligência Artificial à criação e gestão de projetos.</p>
+        <h3 class="project-title">Projeto 1</h3>
+        <p class="project-desc">Uma apresentação visual das minhas habilidades, com cada elemento ao redor da personagem representando competências que fazem parte do meu trabalho — da Inteligência Artificial à criação e gestão de projetos.</p>
       </div>
     </article>
 
     <article class="project-card reveal">
-      <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
-      <div class="corner corner-bl"></div><div class="corner corner-br"></div>
-      <div class="project-media-single">
-        <div class="media-box"><div class="media-box-inner"><video src="projeto-2.mp4" controls playsinline preload="metadata"></video></div></div>
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div>
+      <div class="corner corner-br"></div>
+      <div class="media-single">
+        <div class="media-box"><div class="media-inner"><video src="Projeto2.mp4" controls playsinline preload="metadata"></video></div></div>
       </div>
       <div class="project-content">
-        <h3>Projeto 2</h3>
-        <p>Uma demonstração de criação com IA generativa, explorando geração e animação de vídeo para transformar ideias em conteúdo digital.</p>
+        <h3 class="project-title">Projeto 2</h3>
+        <p class="project-desc">Uma demonstração de criação com IA generativa, explorando geração e animação de vídeo para transformar ideias em conteúdo digital.</p>
       </div>
     </article>
 
     <article class="project-card reveal">
-      <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
-      <div class="corner corner-bl"></div><div class="corner corner-br"></div>
-      <div class="project-media-dual">
-        <div class="media-box"><div class="media-box-inner"><video src="miniaturas-video.mp4" controls playsinline preload="metadata"></video></div></div>
-        <div class="media-box"><div class="media-box-inner"><img src="miniatura-imagem-base.png" alt="Miniaturas — Imagem Base"></div></div>
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div>
+      <div class="corner corner-br"></div>
+      <div class="media-dual">
+        <div class="media-box"><div class="media-inner"><video src="miniaturas-video.mp4" controls playsinline preload="metadata"></video></div></div>
+        <div class="media-box"><div class="media-inner"><img src="miniatura-imagem-base.png" alt="Miniaturas — Imagem Base"></div></div>
       </div>
       <div class="project-content">
-        <h3>Miniaturas — Personagens em Escala</h3>
-        <p>Um projeto criado para transformar uma ideia em cena, unindo criatividade, IA e atenção aos detalhes. Foram dias de criação e ajustes até dar vida a uma composição única, cheia de personalidade.</p>
+        <h3 class="project-title">Miniaturas — Personagens em Escala</h3>
+        <p class="project-desc">Um projeto criado para transformar uma ideia em cena, unindo criatividade, IA e atenção aos detalhes. Foram dias de criação e ajustes até dar vida a uma composição única, cheia de personalidade.</p>
       </div>
     </article>
 
     <article class="project-card reveal">
-      <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
-      <div class="corner corner-bl"></div><div class="corner corner-br"></div>
-      <div class="project-media-triple">
-        <div class="media-box"><div class="media-box-inner"><video src="k-alves-logo-animada.mp4" controls playsinline preload="metadata"></video></div></div>
-        <div class="media-box"><div class="media-box-inner"><img src="k-alves-imagem-1.png" alt="K Alves — Imagem 1"></div></div>
-        <div class="media-box"><div class="media-box-inner"><img src="k-alves-imagem-2.png" alt="K Alves — Imagem 2"></div></div>
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div>
+      <div class="corner corner-br"></div>
+      <div class="media-triple">
+        <div class="media-box"><div class="media-inner"><video src="k-alves-logo-animada.mp4" controls playsinline preload="metadata"></video></div></div>
+        <div class="media-box"><div class="media-inner"><img src="k-alves-imagem-1.jpg" alt="K Alves — Imagem 1"></div></div>
+        <div class="media-box"><div class="media-inner"><img src="k-alves-imagem-2.jpg" alt="K Alves — Imagem 2"></div></div>
       </div>
       <div class="project-content">
-        <h3>K Alves Construções</h3>
-        <p style="font-style: italic; margin-top: 8px;">"Fiquei muito feliz com o resultado do projeto. Meu portfólio ficou muito bonito, organizado e profissional, exatamente como eu queria apresentar meu trabalho. A logo ficou excelente, com muita qualidade, e deixou a identidade da minha marca ainda mais forte.</p>
-        <p style="font-style: italic; margin-top: 12px;">Gostei muito do resultado final e fiquei muito satisfeito em ver meu trabalho apresentado de uma forma tão profissional."</p>
+        <h3 class="project-title">K Alves Construções</h3>
+        <p class="project-desc" style="font-style: italic; margin-top: 8px;">"Fiquei muito feliz com o resultado do projeto. Meu portfólio ficou muito bonito, organizado e profissional, exatamente como eu queria apresentar meu trabalho. A logo ficou excelente, com muita qualidade, e deixou a identidade da minha marca ainda mais forte."</p>
+        <p class="project-desc" style="font-style: italic; margin-top: 12px;">"Gostei muito do resultado final e fiquei muito satisfeita em ver meu trabalho apresentado de uma forma tão profissional."</p>
         <a href="https://www.canva.com/design/DAHWPeaOUsk/Xjsr253yv3jBsMQpCo0jyw/view" target="_blank" class="btn" style="margin-top: 18px;">Ver Projeto Completo <i class="ph ph-arrow-up-right"></i></a>
       </div>
     </article>
@@ -532,45 +510,47 @@ footer {
     <div class="reveal">
       <p class="eyebrow">Criações</p>
       <h2 class="section-title">Criações Visuais</h2>
-      <div class="section-line"></div>
+      <div class="section-divider"></div>
     </div>
     <div class="visual-grid">
       <article class="visual-card reveal">
-        <div class="visual-card-inner"><img src="25127.jpg" alt="Convite de Casamento"></div>
-        <div class="visual-card-caption"><h3>Convite de Casamento</h3></div>
+        <div class="visual-inner"><img src="25127.jpg" alt="Convite de Casamento"></div>
+        <div class="visual-caption"><h3>Convite de Casamento</h3></div>
       </article>
       <article class="visual-card reveal">
-        <div class="visual-card-inner"><img src="25126.jpg" alt="Convite de Aniversário"></div>
-        <div class="visual-card-caption"><h3>Convite de Aniversário</h3></div>
+        <div class="visual-inner"><img src="25126.jpg" alt="Convite de Aniversário"></div>
+        <div class="visual-caption"><h3>Convite de Aniversário</h3></div>
       </article>
       <article class="visual-card reveal">
-        <div class="visual-card-inner"><img src="25128.jpg" alt="Convite de Chá de Bebê"></div>
-        <div class="visual-card-caption"><h3>Convite de Chá de Bebê</h3></div>
+        <div class="visual-inner"><img src="25128.jpeg" alt="Convite de Chá de Bebê"></div>
+        <div class="visual-caption"><h3>Convite de Chá de Bebê</h3></div>
       </article>
       <article class="visual-card reveal">
-        <div class="visual-card-inner"><img src="25129.png" alt="Tranças Afro — Banner"></div>
-        <div class="visual-card-caption"><h3>Tranças Afro — Banner</h3></div>
+        <div class="visual-inner"><img src="25129.png" alt="Tranças Afro — Banner"></div>
+        <div class="visual-caption"><h3>Tranças Afro — Banner</h3></div>
       </article>
     </div>
   </div>
 </section>
 
 <section id="contato" class="section">
-  <div class="section-inner">
-    <div class="contact-grid">
-      <div class="reveal">
-        <p class="eyebrow">Contato</p>
-        <h2 class="section-title">Vamos Criar Juntos?</h2>
-        <div class="section-line"></div>
-        <p style="color: var(--text-muted); margin-bottom: 25px;">Vamos transformar sua ideia em algo real? Me conte o que você precisa e vamos construir algo especial.</p>
-        <div class="project-card" style="border-left: 3px solid var(--rose-burnt); padding: 25px;">
-          <p style="color: #d8a0b5; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px;">📧 E-mail</p>
-          <a href="mailto:elizamabritocontato@gmail.com" style="color: #fff; font-weight: 600; font-size: 1rem;">elizamabritocontato@gmail.com</a>
-        </div>
+  <div class="section-inner contact-grid">
+    <div class="reveal">
+      <p class="eyebrow">Contato</p>
+      <h2 class="section-title">Vamos Criar Juntos?</h2>
+      <div class="section-divider"></div>
+      <p style="color: var(--text-muted); margin-bottom: 25px;">Vamos transformar sua ideia em algo real? Me conte o que você precisa e vamos construir algo especial.</p>
+      <div class="contact-box">
+        <p class="contact-label">📧 E-mail</p>
+        <a href="mailto:elizamabritocontato@gmail.com" class="contact-email">elizamabritocontato@gmail.com</a>
       </div>
-      <div class="project-card reveal">
-        <div class="corner corner-tl"></div><div class="corner corner-tr"></div>
-        <div class="corner corner-bl"></div><div class="corner corner-br"></div>
+    </div>
+    <div class="reveal">
+      <div class="project-card" style="margin-bottom: 0;">
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
         <form id="contact-form">
           <div class="field">
             <label for="nome">Nome</label>
@@ -593,14 +573,13 @@ footer {
 </main>
 
 <footer>
-  <div class="footer-closing">
-    <div class="verse">"Consagre ao Senhor tudo o que você faz, e os seus planos serão bem-sucedidos."</div>
-    <div class="verse-reference">— Provérbios 16:3</div>
-    <p>Agradeço pela visita e pelo interesse no meu trabalho.</p>
-    <p>Fico à disposição para colaborações, projetos e parcerias.</p>
-    <p class="footer-signature">— Elyzama Britt</p>
+  <div class="footer-quote">
+    <p class="quote-text">"Consagre ao Senhor tudo o que você faz, e os seus planos serão bem-sucedidos."</p>
+    <p class="quote-author">— Provérbios 16:3</p>
   </div>
-  <p>© 2026 ELYZAMA BRITT — Todos os direitos reservados</p>
+  <p>Agradeço pela visita e pelo interesse no meu trabalho.</p>
+  <p style="margin-top: 25px;">— Elyzama Britt</p>
+  <p style="margin-top: 15px; font-size: 0.65rem; opacity: 0.6;">© 2026 ELYZAMA BRITT — Todos os direitos reservados</p>
 </footer>
 
 <script>
