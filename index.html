@@ -190,14 +190,11 @@ header {
 }
 .media-inner {
   border-radius: 12px; overflow: hidden; background: rgba(0, 0, 0, 0.8);
-  width: 100%;
-  height: auto;
+  width: 100%; height: 100%;
 }
-.media-inner.vertical { min-height: 400px; height: auto; }
+.media-inner.vertical { aspect-ratio: 9/16; }
 .media-inner img, .media-inner video {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
+  width: 100%; height: 100%; object-fit: cover;
 }
 
 .presentation-grid {
@@ -231,24 +228,37 @@ header {
   .media-dual, .media-triple { grid-template-columns: 1fr; }
 }
 
+/* ✅ SÓ A SEÇÃO DAS CRIAÇÕES — AJUSTADA PARA NÃO CORTAR */
 .visual-grid {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-top: 40px;
 }
 .visual-card {
-  aspect-ratio: 1; overflow: hidden; position: relative; border-radius: 14px; padding: 2px;
+  aspect-ratio: unset; /* Deixa a imagem com sua forma natural */
+  overflow: hidden; position: relative; border-radius: 14px; padding: 2px;
   background: linear-gradient(135deg, var(--border-cyan), var(--border-rose)); transition: all 0.3s ease;
+  min-height: 280px; /* Tamanho mínimo bonito */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .visual-card:hover { transform: translateY(-3px); box-shadow: 0 0 30px rgba(90, 200, 250, 0.15); }
-.visual-inner { border-radius: 12px; overflow: hidden; background: #000; width: 100%; height: 100%; }
+.visual-inner {
+  border-radius: 12px; overflow: hidden; background: #000;
+  width: 100%; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .visual-inner img {
   width: 100%;
   height: auto;
-  object-fit: contain;
+  max-height: 350px;
+  object-fit: contain; /* ✅ NÃO CORTA — mostra a imagem inteira! */
   transition: transform 0.3s ease;
 }
-.visual-card:hover img { transform: scale(1.05); }
+.visual-card:hover img { transform: scale(1.03); }
 .visual-caption {
-  position: absolute; bottom: 0; left: 0; right: 0; padding: 25px;
+  position: absolute; bottom: 0; left: 0; right: 0; padding: 20px;
   background: linear-gradient(transparent, rgba(2, 4, 8, 0.95));
 }
 .visual-caption h3 {
@@ -499,7 +509,7 @@ footer {
       <div class="corner corner-bl"></div>
       <div class="corner corner-br"></div>
       <div class="media-triple">
-        <div class="media-box"><div class="media-inner"><video src="k-alves-logo-animado.mp4" controls playsinline preload="metadata"></video></div></div>
+        <div class="media-box"><div class="media-inner"><video src="k-alves-logo-animada.mp4" controls playsinline preload="metadata"></video></div></div>
         <div class="media-box"><div class="media-inner"><img src="k-alves-imagem-1.jpg" alt="K Alves — Imagem 1"></div></div>
         <div class="media-box"><div class="media-inner"><img src="k-alves-imagem-2.jpg" alt="K Alves — Imagem 2"></div></div>
       </div>
@@ -534,7 +544,7 @@ footer {
         <div class="visual-caption"><h3>Convite de Chá de Bebê</h3></div>
       </article>
       <article class="visual-card reveal">
-        <div class="visual-inner"><img src="trancas-afro-banner.jpg" alt="Tranças Afro — Banner"></div>
+        <div class="visual-inner"><img src="25129.png" alt="Tranças Afro — Banner"></div>
         <div class="visual-caption"><h3>Tranças Afro — Banner</h3></div>
       </article>
     </div>
